@@ -1,0 +1,53 @@
+# RAG Chatbot for Vietnamese Business Registration
+
+# Vector Store Settings
+vector_store:
+  type: "weaviate"
+  url: "http://localhost:8080"
+  collection_name: "LegalDocuments"
+
+# Embedding Model Settings
+embeddings:
+  model_name: "bkai-foundation-models/vietnamese-bi-encoder"
+  device: "cuda"
+
+# Reranking Settings
+reranking:
+  model_name: "cross-encoder/multilingual-MiniLM-L-12-v2"
+  device: "cuda"
+
+# Language Model Settings
+intent_classifier:
+  provider: "groq"
+  model_name: "llama3-8b-8192"
+  temperature: 0.1
+
+main_llm:
+  provider: "gemini"
+  model_name: "gemini-2.0-flash-exp"
+  temperature: 0.7
+  max_tokens: 2048
+
+# Document Processing Settings
+document_processing:
+  chunk_size: 1000
+  chunk_overlap: 200
+  supported_formats: ["docx"]
+  
+# Retrieval Settings
+retrieval:
+  top_k: 10
+  rerank_top_k: 5
+  similarity_threshold: 0.7
+
+# Intent Classification
+intents:
+  - legal      # Questions about laws and regulations
+  - business   # Document generation for business registration
+  - general    # General advice about business establishment
+
+# Web Interface Settings
+web_interface:
+  title: "RAG Chatbot - Đăng ký Kinh doanh Việt Nam"
+  port: 8501
+  host: "localhost"

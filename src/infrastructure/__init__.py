@@ -1,0 +1,1 @@
+# Infrastructure layer - external frameworks and adapters
